@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
 import org.springframework.boot.web.server.WebServer;
 import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
+import org.springframework.context.support.GenericApplicationContext;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -16,12 +17,16 @@ import org.springframework.http.MediaType;
 public class TobySpringbootApplication {
 
 	public static void main(String[] args) {
+
+		GenericApplicationContext applicationContext = new GenericApplicationContext();
+		applicationContext.registerBean(HelloController.class);
+		applicationContext.registerBean(SimpleHelloService.class);
+		applicationContext.refresh(); // applicationContext 가 Bean Object를 만들어주는 메서드
+
 		ServletWebServerFactory serverFactory = new TomcatServletWebServerFactory();
-		// 익명 클래스
+
 		WebServer webServer = serverFactory.getWebServer(servletContext ->
 			servletContext.addServlet("front-controller", new HttpServlet() {
-				HelloController helloController = new HelloController();
-
 				@Override
 				protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -32,15 +37,13 @@ public class TobySpringbootApplication {
 						String name = req.getParameter("name");
 
 						// handler Mapping
+						HelloController helloController = applicationContext.getBean(HelloController.class);
 						String ret = helloController.hello(name);
 
 						// Response : Status Code, Content-Type, Body
-						resp.setStatus(HttpStatus.OK.value());
 						resp.setContentType(MediaType.TEXT_PLAIN_VALUE);
 						resp.getWriter().println(ret);
 
-					} else if (req.getRequestURI().equals("/user")) {
-						resp.setStatus(HttpStatus.NOT_FOUND.value());
 					} else {
 						resp.setStatus(HttpStatus.NOT_FOUND.value());
 					}
