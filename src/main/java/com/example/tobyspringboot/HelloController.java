@@ -11,17 +11,24 @@ import org.springframework.web.bind.annotation.RestController;
 public class HelloController{
 
 	private final HelloService helloService;
-	private final ApplicationContext applcationContext;
+//	private final ApplicationContext applcationContext;
+//	public HelloController(HelloService helloService, ApplicationContext applcationContext) {
+//		this.helloService = helloService;
+//		this.applcationContext = applcationContext;
+//		System.out.println(applcationContext);
+//	}
 
-	public HelloController(HelloService helloService, ApplicationContext applcationContext) {
+
+	public HelloController(HelloService helloService) {
 		this.helloService = helloService;
-		this.applcationContext = applcationContext;
-		System.out.println(applcationContext);
 	}
 
 	@GetMapping("/hello")
 	public String hello(String name) {
-		return helloService.sayHello(Objects.requireNonNull(name));
+		if (name == null || name.trim().length() == 0) {
+			throw new IllegalArgumentException();
+		}
+		return helloService.sayHello(name);
 	}
 
 //	@Override
