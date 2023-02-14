@@ -1,4 +1,4 @@
-package com.example.tobyspringboot;
+package com.example.tobyspringboot.hello;
 
 import org.springframework.boot.web.server.WebServer;
 import org.springframework.boot.web.servlet.server.ServletWebServerFactory;

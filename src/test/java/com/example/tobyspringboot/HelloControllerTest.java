@@ -3,6 +3,7 @@ package com.example.tobyspringboot;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import com.example.tobyspringboot.hello.HelloController;
 import org.junit.jupiter.api.Test;
 
 class HelloControllerTest {

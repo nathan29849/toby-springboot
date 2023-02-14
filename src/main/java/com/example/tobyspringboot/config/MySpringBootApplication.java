@@ -1,5 +1,6 @@
-package com.example.tobyspringboot;
+package com.example.tobyspringboot.config;
 
+import com.example.tobyspringboot.config.EnableMyAutoConfig;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -11,6 +12,7 @@ import org.springframework.context.annotation.Configuration;
 @ComponentScan
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
+@EnableMyAutoConfig
 public @interface MySpringBootApplication {
 
 }

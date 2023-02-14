@@ -1,4 +1,4 @@
-package com.example.tobyspringboot;
+package com.example.tobyspringboot.hello;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

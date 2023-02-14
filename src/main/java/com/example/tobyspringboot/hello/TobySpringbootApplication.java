@@ -1,6 +1,7 @@
-package com.example.tobyspringboot;
+package com.example.tobyspringboot.hello;
 
 
+import com.example.tobyspringboot.config.MySpringBootApplication;
 import org.springframework.boot.SpringApplication;
 
 @MySpringBootApplication

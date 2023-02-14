@@ -2,6 +2,8 @@ package com.example.tobyspringboot;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import com.example.tobyspringboot.hello.HelloDecorator;
+import com.example.tobyspringboot.hello.SimpleHelloService;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
