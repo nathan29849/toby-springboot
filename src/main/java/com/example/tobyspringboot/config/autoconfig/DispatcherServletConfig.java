@@ -1,10 +1,9 @@
 package com.example.tobyspringboot.config.autoconfig;
 
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.DispatcherServlet;
 
-@Configuration
+@MyAutoConfig
 public class DispatcherServletConfig {
 
 	@Bean
